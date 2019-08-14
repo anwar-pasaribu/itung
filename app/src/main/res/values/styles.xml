@@ -1,11 +1,79 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorOnPrimary">@color/onPrimary</item>
     </style>
 
+    <style name="AppTheme.Itung" parent="AppTheme">
+
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Optional, if drawing behind the status bar too -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="textAppearanceHeadline1">@style/Itung.Widget.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/Itung.Widget.Headline2</item>
+        <item name="textAppearanceButton">@style/Itung.Widget.Text.Button.Numpad</item>
+        
+        <item name="itungNumberButtonMain">@style/Itung.Widget.Button.Numpad</item>
+    </style>
+
+    <style name="Itung.Widget.Headline1" parent="@style/TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">@dimen/text_h2 <!-- Special H2--></item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Itung.Widget.Headline2" parent="@style/TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">@dimen/text_h1 <!-- Special H1--></item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Itung.Widget.Text.Button.Numpad" parent="@style/TextAppearance.MaterialComponents.Button">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">@dimen/text_button <!-- 24sp --></item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Itung.Widget.Button.Numpad" parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">@dimen/numpad_dimensions</item>
+        <item name="android:layout_height">@dimen/numpad_dimensions</item>
+        <item name="android:insetTop">@dimen/zero_dp</item>
+        <item name="android:insetBottom">@dimen/zero_dp</item>
+        <item name="shapeAppearance">@style/Itung.Shape.Circle</item>
+        <item name="android:textAppearance">?attr/textAppearanceButton</item>
+        <item name="android:padding">@dimen/zero_dp</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="Itung.Widget.Button.Del" parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">@dimen/numpad_dimensions</item>
+        <item name="android:layout_height">@dimen/numpad_dimensions</item>
+        <item name="android:insetTop">@dimen/zero_dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="shapeAppearance">@style/Itung.Shape.Circle</item>
+        <item name="android:padding">@dimen/zero_dp</item>
+        <item name="iconPadding">@dimen/zero_dp</item>
+        <item name="iconGravity">textStart</item>
+
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin</item>
+        <item name="android:insetLeft">@dimen/zero_dp</item>
+        <item name="android:insetRight">@dimen/zero_dp</item>
+    </style>
+
+    <style name="Itung.Shape.Circle" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerSize">32dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
 </resources>

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 
@@ -21,6 +21,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -44,11 +48,20 @@ dependencies {
     // Android Testing Support Library's runner and rules
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.atsl.rules
-    androidTestImplementation deps.room.testing
-    androidTestImplementation deps.arch_core.testing
+
+    // FIREBASE
+    // Version for each type is not same from Google
+    implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-auth:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    // LOGGER
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     // Espresso UI Testing
     androidTestImplementation deps.espresso.core
     androidTestImplementation deps.espresso.contrib
     androidTestImplementation deps.espresso.intents
 }
+
+apply plugin: 'com.google.gms.google-services'

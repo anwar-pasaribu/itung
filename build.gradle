@@ -4,11 +4,14 @@ buildscript {
     apply from: 'versions.gradle'
     addRepos(repositories)
     dependencies {
-        classpath deps.android_gradle_plugin
+        classpath "com.android.tools.build:gradle:${versions.android_gradle_plugin}"
         classpath deps.kotlin.plugin
 
         // Safe Args
         classpath deps.navigation.safe_args_plugin
+
+        // The google-services.json parser
+        classpath 'com.google.gms:google-services:4.3.0'
     }
     repositories {
         google()
