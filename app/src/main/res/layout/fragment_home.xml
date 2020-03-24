@@ -1,203 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top"
-        app:layout_constraintGuide_begin="@dimen/activity_vertical_margin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"/>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.unware.itung.ui.home.HomeViewModel" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/activity_horizontal_margin" />
+    </data>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/activity_horizontal_margin" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent_container_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/view_fragment_home_display_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_fragment_home_result_number"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/activity_vertical_margin" />
 
-    <TextView
-        android:id="@+id/tv_fragment_home_original_number"
-        style="?attr/textAppearanceHeadline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="9.000.000"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@id/tv_fragment_home_percentage"
-        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/activity_horizontal_margin" />
 
-    <TextView
-        android:id="@+id/tv_fragment_home_percentage"
-        style="?attr/textAppearanceHeadline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="25%"
-        app:layout_constraintLeft_toRightOf="@+id/tv_fragment_home_original_number"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/activity_horizontal_margin" />
 
-    <TextView
-        android:id="@+id/tv_fragment_home_result_number"
-        style="?attr/textAppearanceHeadline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="6.750.000"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/tv_fragment_home_original_number" />
+        <View
+            android:id="@+id/view_fragment_home_display_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_fragment_home_result_number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_fragment_home_original_number"
+            style="?attr/textAppearanceHeadline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/number_zero"
+            android:text="@{viewModel.typedNumber}"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@id/tv_fragment_home_percentage"
+            app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn1"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:layout_marginTop="@dimen/zero_dp"
-        android:text="1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn4"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn2"
-        app:layout_constraintTop_toBottomOf="@id/view_fragment_home_display_container"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/tv_fragment_home_percentage"
+            style="?attr/textAppearanceHeadline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25%"
+            app:layout_constraintLeft_toRightOf="@+id/tv_fragment_home_original_number"
+            app:layout_constraintRight_toLeftOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/guideline_top" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn2"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:layout_marginTop="@dimen/zero_dp"
-        android:text="2"
-        app:layout_constraintBottom_toTopOf="@id/btn_fragment_home_btn5"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn1"
-        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn3"
-        app:layout_constraintTop_toBottomOf="@id/view_fragment_home_display_container"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn3"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:layout_marginTop="@dimen/zero_dp"
-        android:layout_marginRight="@dimen/zero_dp"
-        android:text="3"
-        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn6"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn2"
-        app:layout_constraintRight_toRightOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@id/view_fragment_home_display_container"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn4"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:text="4"
-        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn7"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn5"
-        app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn1" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn5"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:text="5"
-        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn8"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn4"
-        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn6"
-        app:layout_constraintTop_toBottomOf="@+id/btn_fragment_home_btn2" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn6"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:layout_marginRight="@dimen/zero_dp"
-        android:text="6"
-        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn9"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn5"
-        app:layout_constraintRight_toRightOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn3" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn7"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:text="7"
-        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn0"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn8"
-        app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn4" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn8"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:text="8"
-        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn000"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn7"
-        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn9"
-        app:layout_constraintTop_toBottomOf="@+id/btn_fragment_home_btn5" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn9"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:layout_marginRight="@dimen/zero_dp"
-        android:text="9"
-        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn_del"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn8"
-        app:layout_constraintRight_toRightOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn6" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn0"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:text="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left"
-        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn000"
-        app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn7" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn000"
-        style="@style/Itung.Widget.Button.Numpad"
-        android:text="000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn0"
-        app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn_del"
-        app:layout_constraintTop_toBottomOf="@+id/btn_fragment_home_btn8" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_fragment_home_btn_del"
-        style="@style/Itung.Widget.Button.Del"
-        android:layout_marginRight="@dimen/zero_dp"
-        app:icon="@drawable/ic_backspace_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn000"
-        app:layout_constraintRight_toRightOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn9" />
+        <TextView
+            android:id="@+id/tv_fragment_home_result_number"
+            style="?attr/textAppearanceHeadline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number_zero"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_fragment_home_original_number" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn1"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:layout_marginTop="@dimen/zero_dp"
+            android:text="@string/number_one"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn4"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn2"
+            app:layout_constraintTop_toBottomOf="@id/view_fragment_home_display_container"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn2"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:layout_marginTop="@dimen/zero_dp"
+            android:text="@string/number_two"
+            app:layout_constraintBottom_toTopOf="@id/btn_fragment_home_btn5"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn1"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn3"
+            app:layout_constraintTop_toBottomOf="@id/view_fragment_home_display_container"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn3"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:layout_marginTop="@dimen/zero_dp"
+            android:layout_marginRight="@dimen/zero_dp"
+            android:text="@string/number_three"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn6"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn2"
+            app:layout_constraintRight_toRightOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/view_fragment_home_display_container"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn4"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:text="@string/number_four"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn7"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn5"
+            app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn5"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:text="@string/number_five"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn8"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn4"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_fragment_home_btn2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn6"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:layout_marginRight="@dimen/zero_dp"
+            android:text="@string/number_six"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn9"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn5"
+            app:layout_constraintRight_toRightOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn3" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn7"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:text="@string/number_seven"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn0"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn8"
+            app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn4" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn8"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:text="@string/number_eight"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn000"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn7"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn9"
+            app:layout_constraintTop_toBottomOf="@+id/btn_fragment_home_btn5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn9"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:layout_marginRight="@dimen/zero_dp"
+            android:text="@string/number_nine"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fragment_home_btn_del"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn8"
+            app:layout_constraintRight_toRightOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn6" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn0"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:text="@string/number_zero"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@id/guideline_left"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn000"
+            app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn7" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn000"
+            style="@style/Itung.Widget.Button.Numpad"
+            android:text="@string/number_triple_zero"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn0"
+            app:layout_constraintRight_toLeftOf="@+id/btn_fragment_home_btn_del"
+            app:layout_constraintTop_toBottomOf="@+id/btn_fragment_home_btn8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fragment_home_btn_del"
+            style="@style/Itung.Widget.Button.Del"
+            android:layout_marginRight="@dimen/zero_dp"
+            app:icon="@drawable/ic_backspace_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/btn_fragment_home_btn000"
+            app:layout_constraintRight_toRightOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/btn_fragment_home_btn9" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

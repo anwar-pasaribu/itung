@@ -26,6 +26,12 @@ android {
     dataBinding {
         enabled = true
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -43,11 +49,6 @@ dependencies {
 
     implementation deps.lifecycle.extensions
 
-    testImplementation 'junit:junit:4.12'
-
-    // Android Testing Support Library's runner and rules
-    androidTestImplementation deps.atsl.runner
-    androidTestImplementation deps.atsl.rules
 
     // FIREBASE
     // Version for each type is not same from Google
@@ -58,10 +59,26 @@ dependencies {
     // LOGGER
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
+    androidTestImplementation deps.support.fragment_testing
+
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+
+    androidTestImplementation deps.arch_core.testing
+
     // Espresso UI Testing
-    androidTestImplementation deps.espresso.core
     androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.core
     androidTestImplementation deps.espresso.intents
+
+    androidTestImplementation deps.atsl.ext_junit
+    androidTestImplementation deps.atsl.uiautomator
+    androidTestImplementation deps.atsl.truth
+
+    testImplementation deps.junit
+    testImplementation 'org.robolectric:robolectric:4.3'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

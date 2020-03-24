@@ -24,6 +24,19 @@
         <item name="textAppearanceButton">@style/Itung.Widget.Text.Button.Numpad</item>
         
         <item name="itungNumberButtonMain">@style/Itung.Widget.Button.Numpad</item>
+
+        <item name="appBarLayoutStyle">@style/Itung.Widget.TopAppbar</item>
+    </style>
+
+    <style name="Itung.Widget.TopAppbar" parent="@style/Widget.MaterialComponents.AppBarLayout.Primary">
+        <item name="android:elevation">0dp</item>
+        <item name="android:toolbarStyle">@style/Itung.Widget.Toolbar</item>
+    </style>
+
+    <style name="Itung.Widget.Toolbar" parent="@style/Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:elevation">0dp</item>
+        <item name="android:iconTint">#fff</item>
+        <item name="titleTextAppearance">@style/Itung.Widget.Headline1</item>
     </style>
 
     <style name="Itung.Widget.Headline1" parent="@style/TextAppearance.MaterialComponents.Headline1">
